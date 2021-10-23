@@ -70,7 +70,9 @@ function RegisterPage(props) {
           />
 
           <br />
-          <button type="submit">회원가입</button>
+          <button login_btn type="submit">
+            회원가입
+          </button>
         </form>
       </div>
     </div>

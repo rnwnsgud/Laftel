@@ -9,6 +9,7 @@ import NavBar from "./components/views/NavBar/NavBar";
 import Auth from "./hoc/auth";
 import UploadProductPage from "./components/views/UploadProductPage/UploadProductPage";
 import FinderPage from "./components/views/FinderPage/FinderPage";
+import DetailProductPage from "./components/views/DetailProductPage/DetailProductPage";
 
 function App() {
   return (
@@ -38,6 +39,11 @@ function App() {
                   exact
                   path="/finder"
                   component={Auth(FinderPage, null)}
+                />
+                <Route
+                  exact
+                  path="/product/:productId"
+                  component={Auth(DetailProductPage, null)}
                 />
               </>
             )}

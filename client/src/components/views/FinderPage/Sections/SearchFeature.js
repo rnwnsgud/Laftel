@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function SearchFeature(props) {
   const [SearchTerm, setSearchTerm] = useState("");
-  console.log("Feautersearch", SearchTerm);
+  //console.log("Feautersearch", SearchTerm);
   const searchHandler = (e) => {
     setSearchTerm(e.currentTarget.value);
     props.refreshFunction(e.currentTarget.value);

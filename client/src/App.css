@@ -36,6 +36,14 @@ h5 {
   margin: 0;
   margin-bottom: 5px;
 }
+h6 {
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+p {
+  margin: 0;
+}
 .container {
   width: 100%;
   display: block;
@@ -288,6 +296,112 @@ label {
 .form-control {
   width: 150px;
 }
+
+.Detail_container {
+  width: 100%;
+  height: 100%;
+  padding-top: 1px;
+}
+
+.Detail_background {
+  height: 420px;
+  width: 100%;
+  background: rgb(40, 42, 53);
+  padding: 1%;
+  margin-top: 74px;
+}
+
+.product_img {
+  width: 268px;
+  height: 300.31px;
+  position: relative;
+  top: 100px;
+  left: 300px;
+}
+
+.thumbnail_btn {
+  width: 268px;
+  height: 58px;
+  position: relative;
+  top: 100px;
+  left: 300px;
+  background-color: rgb(40, 42, 53);
+  transition: none;
+}
+
+.thumbnail_btn:hover {
+  opacity: 1;
+}
+
+.thumbnail_btn p {
+  transition: all 0.5s;
+  color: gray;
+}
+
+.thumbnail_btn p:hover {
+  color: #eee;
+}
+
+.product_title {
+  color: white;
+  position: relative;
+  left: 610px;
+  bottom: 220px;
+}
+
+.product_info {
+  position: relative;
+  left: 1150px;
+}
+
+.detail_card {
+  width: 360px;
+  padding: 24px;
+  font-size: 13px;
+  max-height: 180px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.moreView {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.8125rem;
+}
+
+.product_modal {
+  display: none;
+  float: left;
+  position: relative;
+  left: 600px;
+  bottom: 400px;
+  width: 36rem;
+  padding: 1.5rem;
+  border-radius: 4px;
+  background: white;
+  color: rgb(40, 42, 53);
+}
+
+.product_modal_block {
+  display: block;
+  float: left;
+  position: relative;
+  left: 600px;
+  bottom: 400px;
+  width: 36rem;
+  padding: 1.5rem;
+  border-radius: 4px;
+  background: white;
+  color: rgb(40, 42, 53);
+}
+
+.btn-close {
+  display: none;
+}
+
 @font-face {
   font-family: "SpoqaHanSansNeo-Regular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff")

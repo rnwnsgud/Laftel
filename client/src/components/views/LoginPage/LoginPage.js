@@ -49,7 +49,9 @@ function LoginPage(props) {
           />
 
           <br />
-          <button type="submit">로그인</button>
+          <button className="login_btn" type="submit">
+            로그인
+          </button>
         </form>
       </div>
     </div>
