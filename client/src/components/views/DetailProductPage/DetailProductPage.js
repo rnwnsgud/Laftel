@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductImage from "./Sections/ProductImage";
 import ProductInfo from "./Sections/ProductInfo";
 import { genres } from "../FinderPage/Sections/Data";
-import ProductMain from "./Sections/ProductMain";
+import ProductEpisode from "./Sections/ProductEpisode";
 function DetailProductPage(props) {
   const productId = props.match.params.productId;
   // console.log("props", props);
@@ -47,8 +47,10 @@ function DetailProductPage(props) {
               보고싶다
             </p>
           </button>
-          <ProductInfo list={genres} detail={Product} />
-          <ProductMain />
+          <div className="product_center">
+            <ProductEpisode />
+            <ProductInfo list={genres} detail={Product} />
+          </div>
         </div>
       </div>
     </div>

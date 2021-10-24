@@ -345,13 +345,8 @@ label {
 .product_title {
   color: white;
   position: relative;
-  left: 610px;
+  left: -150px;
   bottom: 220px;
-}
-
-.product_info {
-  position: relative;
-  left: 1150px;
 }
 
 .detail_card {
@@ -374,22 +369,13 @@ label {
 
 .product_modal {
   display: none;
-  float: left;
-  position: relative;
-  left: 600px;
-  bottom: 400px;
-  width: 36rem;
-  padding: 1.5rem;
-  border-radius: 4px;
-  background: white;
-  color: rgb(40, 42, 53);
 }
 
 .product_modal_block {
   display: block;
   float: left;
   position: relative;
-  left: 600px;
+  left: 300px;
   bottom: 400px;
   width: 36rem;
   padding: 1.5rem;
@@ -400,6 +386,23 @@ label {
 
 .btn-close {
   display: none;
+}
+
+.product_center {
+  display: flex;
+  padding: 15px;
+}
+
+.product_info {
+  position: relative;
+  right: -390px;
+}
+
+.product_episode {
+  width: 760px;
+  position: relative;
+  top: 150px;
+  left: 280px;
 }
 
 @font-face {

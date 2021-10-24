@@ -29,6 +29,37 @@ router.post("/image", (req, res) => {
   });
 });
 
+var storage_video = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "video/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  },
+  fileFilter: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    if (ext !== "mp4") {
+      return cb(res.status(400).end("mp4 is allowed"), false);
+    }
+    cb(null, true);
+  },
+});
+
+var video = multer({ storage: storage_video }).single("file");
+
+router.post("/video", (req, res) => {
+  video(req, res, (err) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    return res.json({
+      success: true,
+      filePath: res.req.file.path,
+      fileName: res.req.file.filename,
+    });
+  });
+});
+
 router.post("/", (req, res) => {
   const product = new Product(req.body);
 

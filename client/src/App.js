@@ -8,9 +8,10 @@ import LoginNextPage from "./components/views/LoginNextPage/LoginNextPage";
 import NavBar from "./components/views/NavBar/NavBar";
 import Auth from "./hoc/auth";
 import UploadProductPage from "./components/views/UploadProductPage/UploadProductPage";
+import UploadVideoPage from "./components/views/UploadVideoPage/UploadVideoPage";
+
 import FinderPage from "./components/views/FinderPage/FinderPage";
 import DetailProductPage from "./components/views/DetailProductPage/DetailProductPage";
-
 function App() {
   return (
     <div>
@@ -23,6 +24,11 @@ function App() {
           />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route
+            exact
+            path="/video/upload"
+            component={Auth(UploadVideoPage, true)}
+          />
           <Route
             exact
             path="*"

@@ -23,7 +23,7 @@ function ProductInfo(props) {
   };
 
   return (
-    <div className="black_background">
+    <div>
       <div className="product_title">
         <h1>{props.detail.title}</h1>
         <br />

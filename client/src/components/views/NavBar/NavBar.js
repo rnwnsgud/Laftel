@@ -79,22 +79,6 @@ function NavBar(props) {
           <a className="header_user_menu_login" href="/loginNext">
             로그인/가입
           </a>
-
-          {/* <p>프로필</p>
-            <p>rnwnsgud90</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-chevron-down"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-              />
-            </svg> */}
         </div>
       </div>
     );
@@ -111,6 +95,8 @@ function NavBar(props) {
           <a href="/">요일별 신작</a>
           <a href="/">테마추천</a>
           <a href="/">멤버쉽</a>
+          <a href="/product/upload">애니업로드</a>
+          <a href="/video/upload">동영상업로드</a>
         </div>
         <div className="header_right">
           <svg
@@ -139,21 +125,6 @@ function NavBar(props) {
           <p onClick={onClickHandler} className="header_user_menu_logout">
             로그아웃
           </p>
-          {/* <p>프로필</p>
-            <p>rnwnsgud90</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-chevron-down"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-              />
-            </svg> */}
         </div>
       </div>
     );
