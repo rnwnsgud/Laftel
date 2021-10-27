@@ -1,4 +1,9 @@
-import { LOGIN_USER, REGISTER_USER, AUTH_USER } from "../_actions/types";
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_USER,
+  ADD_TO_INVENTORY,
+} from "../_actions/types";
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
@@ -10,6 +15,15 @@ export default function reducer(state = {}, action) {
 
     case AUTH_USER:
       return { ...state, userData: action.payload };
+
+    case ADD_TO_INVENTORY:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          inventory: action.payload,
+        },
+      };
 
     default:
       return state;

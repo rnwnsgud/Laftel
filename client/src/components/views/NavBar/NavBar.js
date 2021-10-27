@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 import "../../../App.css";
+import Button from "@restart/ui/esm/Button";
 function NavBar(props) {
   const [Scroll, setScroll] = useState(0);
   const [IsOn, setIsOn] = useState(false);
@@ -122,9 +124,12 @@ function NavBar(props) {
           </svg>
         </div>
         <div className="header_user_menu">
-          <p onClick={onClickHandler} className="header_user_menu_logout">
+          <p>{user.userData && user.userData.name}</p>
+          <Button>보관함</Button>
+
+          {/* <p onClick={onClickHandler} className="header_user_menu_logout">
             로그아웃
-          </p>
+          </p> */}
         </div>
       </div>
     );

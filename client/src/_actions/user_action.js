@@ -1,5 +1,10 @@
 import axios from "axios";
-import { LOGIN_USER, REGISTER_USER, AUTH_USER } from "./types";
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_USER,
+  ADD_TO_INVENTORY,
+} from "./types";
 export function loginUser(dataToSubmit) {
   const request = axios
     .post("/api/users/login", dataToSubmit)
@@ -29,6 +34,21 @@ export function auth() {
 
   return {
     type: AUTH_USER,
+    payload: request,
+  };
+}
+
+export function addToInventory(id) {
+  let body = {
+    productId: id,
+  };
+
+  const request = axios
+    .post("/api/users/addToInventory", body)
+    .then((response) => response.data);
+
+  return {
+    type: ADD_TO_INVENTORY,
     payload: request,
   };
 }

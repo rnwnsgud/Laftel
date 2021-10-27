@@ -150,7 +150,10 @@ p {
 }
 
 .header_user_menu {
+  display: flex;
   margin-right: 50px;
+  align-items: center;
+  gap: 10px;
 }
 
 .form {

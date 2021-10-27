@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Nav } from "react-bootstrap";
 import TabContent from "../Sections/TabContent";
-function ProductEpisode() {
+function ProductEpisode(props) {
   const [Tab, setTab] = useState(0);
+  let Video = props.Video;
 
   return (
     <div className="product_episode">
@@ -29,7 +30,7 @@ function ProductEpisode() {
         </Nav.Item>
       </Nav>
 
-      <TabContent tab={Tab} />
+      <TabContent tab={Tab} Video={Video} />
     </div>
   );
 }

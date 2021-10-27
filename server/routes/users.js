@@ -18,6 +18,7 @@ router.get("/auth", auth, (req, res) => {
     lastname: req.user.lastname,
     role: req.user.role,
     image: req.user.image,
+    inventory: req.user.inventory,
   });
 });
 
@@ -67,6 +68,52 @@ router.get("/logout", auth, (req, res) => {
       });
     }
   );
+});
+
+router.post("/addToInventory", auth, (req, res) => {
+  //user Collection에 해당 유저 정보 가져오기
+  // console.log("req.body", req.body);
+  User.findOne({ _id: req.user._id }, (err, userInfo) => {
+    // console.log("userInfo", userInfo);
+    let duplicate = false; //보고싶다 버튼 클릭시 있으면 지워주고 없으면 추가
+    userInfo.inventory.forEach((item) => {
+      //카트가 없어서 오류 뜬거구나
+      if (item.id === req.body.productId) {
+        duplicate = true;
+      }
+    });
+
+    if (duplicate) {
+      User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+          $pull: { inventory: { id: req.body.productId } },
+        },
+        { new: true },
+        (err, userInfo) => {
+          if (err) return res.status(400).json({ success: false, err });
+          res.status(200).send(userInfo.cart);
+        }
+      );
+    } else {
+      User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+          $push: {
+            inventory: {
+              id: req.body.productId,
+              date: Date.now(),
+            },
+          },
+        },
+        { new: true },
+        (err, userInfo) => {
+          if (err) return res.status(400).json({ success: false, err });
+          res.status(200).send(userInfo.cart);
+        }
+      );
+    }
+  });
 });
 
 module.exports = router;

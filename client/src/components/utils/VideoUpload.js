@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 function VideoUpload(props) {
-  const [Images, setImages] = useState([]);
+  const [FilePath, setFilePath] = useState("");
+  const [Duration, setDuration] = useState("");
+  const [ThumbnailPath, setThumbnailPath] = useState("");
 
   const dropHandler = (files) => {
     let formData = new FormData();
@@ -13,6 +15,26 @@ function VideoUpload(props) {
     axios.post("/api/product/video", formData, config).then((response) => {
       if (response.data.success) {
         console.log(response.data);
+
+        let variable = {
+          url: response.data.url,
+          filName: response.data.fileName,
+        };
+
+        setFilePath(response.data.url);
+        props.refreshFilePath(response.data.url);
+
+        axios.post("/api/product/thumbnail", variable).then((response) => {
+          if (response.data.success) {
+            console.log(response.data);
+            setDuration(response.data.fileDuration);
+            props.refreshDuration(response.data.fileDuration);
+            setThumbnailPath(response.data.url);
+            props.refreshThumbnail(response.data.url);
+          } else {
+            alert("썸네일 생성에 실패함.");
+          }
+        });
       } else {
         alert("파일저장에 실패함");
       }
@@ -39,9 +61,11 @@ function VideoUpload(props) {
         )}
       </Dropzone>
 
-      <div>
-        <img src="" alt="" />
-      </div>
+      {ThumbnailPath && (
+        <div>
+          <img src={`http://localhost:5000/${ThumbnailPath}`} alt="thumbnail" />
+        </div>
+      )}
     </div>
   );
 }

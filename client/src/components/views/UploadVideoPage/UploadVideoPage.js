@@ -3,29 +3,53 @@ import React, { useState, useEffect } from "react";
 import VideoUpload from "../../utils/VideoUpload";
 
 function UploadVideoPage(props) {
-  const [Title, setTitle] = useState("");
+  const [ProductId, setProductId] = useState("");
+  const [Episode, setEpisode] = useState("");
+  const [FilePath, setFilePath] = useState("");
+  const [Duration, setDuration] = useState("");
+  const [Thumbnail, setThumbnail] = useState("");
 
-  const titleChangeHandler = (e) => {
-    setTitle(e.currentTarget.value);
+  const idChangeHandler = (e) => {
+    setProductId(e.currentTarget.value);
+  };
+
+  const episodeChangeHandler = (e) => {
+    setEpisode(e.currentTarget.value);
+  };
+
+  const updateFilePath = (filePath) => {
+    setFilePath(filePath);
+  };
+
+  const updateDuration = (duration) => {
+    setDuration(duration);
+  };
+
+  const updateThumbnail = (thumbnail) => {
+    setThumbnail(thumbnail);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!Title) {
+    if (!ProductId || !Episode) {
       return alert("모든 값을 넣어주세요.");
     }
 
     const body = {
-      title: Title,
+      productId: ProductId,
+      episode: Episode,
+      filePath: FilePath,
+      duration: Duration,
+      thumbnail: Thumbnail,
     };
 
-    axios.post("/api/product", body).then((response) => {
+    axios.post("/api/product/uploadVideo", body).then((response) => {
       if (response.data.success) {
-        alert("애니 업로드에 성공");
+        alert("비디오 업로드에 성공");
         props.history.push("/");
-        //console.log("response data", response.data);
+        console.log("response data", response.data);
       } else {
-        alert("애니 업로드에 실패");
+        alert("비디오 업로드에 실패");
       }
     });
   };
@@ -37,11 +61,20 @@ function UploadVideoPage(props) {
       </div>
 
       <form onSubmit={submitHandler}>
-        <VideoUpload />
+        <VideoUpload
+          refreshFilePath={updateFilePath}
+          refreshDuration={updateDuration}
+          refreshThumbnail={updateThumbnail}
+        />
         <br />
         <br />
-        <label>제목</label>
-        <textarea onChange={titleChangeHandler} value={Title} />
+        <label>상품ID</label>
+        <textarea onChange={idChangeHandler} value={ProductId} />
+        <br />
+        <br />
+
+        <label>에피소드</label>
+        <textarea onChange={episodeChangeHandler} value={Episode} />
         <br />
         <br />
 
