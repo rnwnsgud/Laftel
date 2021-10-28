@@ -3,6 +3,9 @@ import {
   REGISTER_USER,
   AUTH_USER,
   ADD_TO_INVENTORY,
+  GET_INVENTORY_ITEMS,
+  ADD_TO_RECOMMEND,
+  GET_RECOMMEND_ITEMS,
 } from "../_actions/types";
 
 export default function reducer(state = {}, action) {
@@ -24,6 +27,21 @@ export default function reducer(state = {}, action) {
           inventory: action.payload,
         },
       };
+
+    case GET_INVENTORY_ITEMS:
+      return { ...state, inventoryDetail: action.payload };
+
+    case ADD_TO_RECOMMEND:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          recommend: action.payload,
+        },
+      };
+
+    case GET_RECOMMEND_ITEMS:
+      return { ...state, recommendDetail: action.payload };
 
     default:
       return state;

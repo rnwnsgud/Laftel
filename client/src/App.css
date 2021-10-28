@@ -408,6 +408,20 @@ label {
   left: 280px;
 }
 
+.inventory_container {
+  width: 80%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  height: 1900px;
+  padding: 10px;
+}
+
+.paddingS {
+  padding: 1px;
+}
+
 @font-face {
   font-family: "SpoqaHanSansNeo-Regular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff")

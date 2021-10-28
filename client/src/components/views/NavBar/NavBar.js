@@ -125,7 +125,7 @@ function NavBar(props) {
         </div>
         <div className="header_user_menu">
           <p>{user.userData && user.userData.name}</p>
-          <Button>보관함</Button>
+          <a href="/inventory">보관함</a>
 
           {/* <p onClick={onClickHandler} className="header_user_menu_logout">
             로그아웃

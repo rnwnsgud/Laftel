@@ -12,6 +12,7 @@ import UploadVideoPage from "./components/views/UploadVideoPage/UploadVideoPage"
 
 import FinderPage from "./components/views/FinderPage/FinderPage";
 import DetailProductPage from "./components/views/DetailProductPage/DetailProductPage";
+import Inventory from "./components/views/InventoryPage/Inventory";
 function App() {
   return (
     <div>
@@ -50,6 +51,11 @@ function App() {
                   exact
                   path="/product/:productId"
                   component={Auth(DetailProductPage, null)}
+                />
+                <Route
+                  exact
+                  path="/inventory"
+                  component={Auth(Inventory, true)}
                 />
               </>
             )}

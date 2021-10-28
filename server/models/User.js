@@ -27,6 +27,11 @@ const userSchema = mongoose.Schema({
     default: [],
   },
 
+  recommend: {
+    type: Array,
+    default: [],
+  },
+
   image: String,
   token: {
     //유효성 관리
