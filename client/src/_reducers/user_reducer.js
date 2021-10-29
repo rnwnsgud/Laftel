@@ -6,6 +6,7 @@ import {
   GET_INVENTORY_ITEMS,
   ADD_TO_RECOMMEND,
   GET_RECOMMEND_ITEMS,
+  ADD_TO_STARS,
 } from "../_actions/types";
 
 export default function reducer(state = {}, action) {
@@ -37,6 +38,15 @@ export default function reducer(state = {}, action) {
         userData: {
           ...state.userData,
           recommend: action.payload,
+        },
+      };
+
+    case ADD_TO_STARS:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          stars: action.payload,
         },
       };
 

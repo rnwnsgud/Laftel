@@ -20,6 +20,7 @@ router.get("/auth", auth, (req, res) => {
     image: req.user.image,
     inventory: req.user.inventory,
     recommend: req.user.recommend,
+    stars: req.user.stars,
   });
 });
 
@@ -157,6 +158,52 @@ router.post("/addToRecommend", auth, (req, res) => {
         (err, userInfo) => {
           if (err) return res.status(400).json({ success: false, err });
           res.status(200).send(userInfo.recommend);
+        }
+      );
+    }
+  });
+});
+
+router.post("/addToStar", auth, (req, res) => {
+  //user Collection에 해당 유저 정보 가져오기
+  // console.log("req.body", req.body);
+  User.findOne({ _id: req.user._id }, (err, userInfo) => {
+    // console.log("userInfo", userInfo);
+    let duplicate = false; //보고싶다 버튼 클릭시 있으면 지워주고 없으면 추가
+    userInfo.stars.forEach((item) => {
+      //카트가 없어서 오류 뜬거구나
+      if (item.id === req.body.productId) {
+        duplicate = true;
+      }
+    });
+
+    if (duplicate) {
+      User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+          $set: { stars: { id: req.body.productId, stars: req.body.stars } },
+        },
+        { new: true },
+        (err, userInfo) => {
+          if (err) return res.status(400).json({ success: false, err });
+          res.status(200).send(userInfo.stars);
+        }
+      );
+    } else {
+      User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+          $push: {
+            stars: {
+              id: req.body.productId,
+              stars: req.body.stars,
+            },
+          },
+        },
+        { new: true },
+        (err, userInfo) => {
+          if (err) return res.status(400).json({ success: false, err });
+          res.status(200).send(userInfo.stars);
         }
       );
     }

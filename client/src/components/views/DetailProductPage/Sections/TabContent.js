@@ -3,7 +3,7 @@ import React from "react";
 function TabContent(props) {
   const renderVideos = props.Video.map((video, index) => {
     return (
-      <a href={`http://localhost:5000/${video.filePath}`}>
+      <a href={`http://localhost:5000/${video.filePath}`} key={index}>
         <div style={{ display: "flex" }}>
           <img
             style={{ width: "160px", height: "111px" }}

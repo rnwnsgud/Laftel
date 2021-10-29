@@ -73,8 +73,8 @@ function Inventory() {
         </Nav>
 
         <TabListView
-          wantToWatch={user.inventoryDetail && user.inventoryDetail.product}
-          recommend={user.recommendDetail && user.recommendDetail.product}
+          wantToWatch={user.inventoryDetail}
+          recommend={user.recommendDetail}
           Tab={Tab}
         />
       </div>

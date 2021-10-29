@@ -7,6 +7,7 @@ import {
   GET_INVENTORY_ITEMS,
   ADD_TO_RECOMMEND,
   GET_RECOMMEND_ITEMS,
+  ADD_TO_STARS,
 } from "./types";
 export function loginUser(dataToSubmit) {
   const request = axios
@@ -71,14 +72,30 @@ export function addToRecommend(id) {
   };
 }
 
+export function addToStar(id, stars) {
+  let body = {
+    productId: id,
+    stars: stars,
+  };
+
+  const request = axios
+    .post("/api/users/addToStar", body)
+    .then((response) => response.data);
+
+  return {
+    type: ADD_TO_STARS,
+    payload: request,
+  };
+}
+
 export function getInventoryItems(inventoryItems, userInventory) {
   const request = axios
     .get(`/api/product/products_by_id?id=${inventoryItems}&type=array`)
     .then((response) => {
       userInventory.forEach((item) => {
-        response.data.product.forEach((productDetail, index) => {
+        response.data.forEach((productDetail, index) => {
           if (item.id === productDetail._id) {
-            response.data.product[index].date = item.date;
+            response.data[index].date = item.date;
           }
         });
       });
@@ -96,9 +113,9 @@ export function getRecommendItems(recommendItems, userRecommend) {
     .get(`/api/product/products_by_id?id=${recommendItems}&type=array`)
     .then((response) => {
       userRecommend.forEach((item) => {
-        response.data.product.forEach((productDetail, index) => {
+        response.data.forEach((productDetail, index) => {
           if (item.id === productDetail._id) {
-            response.data.product[index].date = item.date;
+            response.data[index].date = item.date;
           }
         });
       });

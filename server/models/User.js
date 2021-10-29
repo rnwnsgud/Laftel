@@ -32,6 +32,11 @@ const userSchema = mongoose.Schema({
     default: [],
   },
 
+  stars: {
+    type: Array,
+    default: [],
+  },
+
   image: String,
   token: {
     //유효성 관리
