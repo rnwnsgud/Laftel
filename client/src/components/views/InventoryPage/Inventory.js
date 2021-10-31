@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 import { Nav } from "react-bootstrap";
 import TabListView from "./Sections/TabListView";
@@ -7,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getInventoryItems,
   getRecommendItems,
+  getStarItems,
 } from "../../../_actions/user_action";
 
 function Inventory() {
@@ -17,6 +17,7 @@ function Inventory() {
   useEffect(() => {
     let inventoryItems = [];
     let recommendItems = [];
+    let starItems = [];
 
     if (user && user.userData) {
       //   console.log("inventory", user.userData.inventory);
@@ -24,7 +25,7 @@ function Inventory() {
         user.userData.inventory.forEach((item) => {
           inventoryItems.push(item.id);
         });
-        dispatch(getInventoryItems(inventoryItems, user.userData.inventory));
+        dispatch(getInventoryItems(inventoryItems, user.userData.inventory)); //굳이 상품id를 따로 담아서 보내는 이유는, 쿼리스트링으로 id를 담기 위해서
       }
 
       if (user.userData.recommend.length > 0) {
@@ -32,6 +33,13 @@ function Inventory() {
           recommendItems.push(item.id);
         });
         dispatch(getRecommendItems(recommendItems, user.userData.recommend));
+      }
+
+      if (user.userData.stars.length > 0) {
+        user.userData.stars.forEach((item) => {
+          starItems.push(item.id);
+        });
+        dispatch(getStarItems(starItems, user.userData.stars));
       }
     }
   }, [user.userData]);
@@ -75,6 +83,7 @@ function Inventory() {
         <TabListView
           wantToWatch={user.inventoryDetail}
           recommend={user.recommendDetail}
+          star={user.starDetail}
           Tab={Tab}
         />
       </div>

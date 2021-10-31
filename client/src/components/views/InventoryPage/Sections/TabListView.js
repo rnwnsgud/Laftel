@@ -44,6 +44,28 @@ function TabListView(props) {
       );
     });
 
+  const renderStars =
+    props.star &&
+    props.star.map((product, index) => {
+      return (
+        <Col lg={3} md={4} xs={4} key={index}>
+          <Card className="mb-2">
+            <a href={`/product/${product._id}`}>
+              <Card.Img
+                variant="top"
+                src={`http://localhost:5000/${product.images[0]}`}
+                height="300px"
+              />
+            </a>
+            <Card.Body>
+              <Card.Text>{product.title}</Card.Text>
+              <Card.Text>{product.stars}점</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      );
+    });
+
   if (props.Tab === 0) {
     return (
       <Row md={3} lg={4}>
@@ -57,7 +79,11 @@ function TabListView(props) {
       </Row>
     );
   } else {
-    return <div>별점</div>;
+    return (
+      <Row md={3} lg={4}>
+        {renderStars}
+      </Row>
+    );
   }
 }
 

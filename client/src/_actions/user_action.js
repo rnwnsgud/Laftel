@@ -8,6 +8,7 @@ import {
   ADD_TO_RECOMMEND,
   GET_RECOMMEND_ITEMS,
   ADD_TO_STARS,
+  GET_STAR_ITEMS,
 } from "./types";
 export function loginUser(dataToSubmit) {
   const request = axios
@@ -124,6 +125,26 @@ export function getRecommendItems(recommendItems, userRecommend) {
 
   return {
     type: GET_RECOMMEND_ITEMS,
+    payload: request,
+  };
+}
+
+export function getStarItems(starItems, userStar) {
+  const request = axios
+    .get(`/api/product/products_by_id?id=${starItems}&type=array`)
+    .then((response) => {
+      userStar.forEach((item) => {
+        response.data.forEach((productDetail, index) => {
+          if (item.id === productDetail._id) {
+            response.data[index].stars = item.stars;
+          }
+        });
+      });
+      return response.data;
+    });
+
+  return {
+    type: GET_STAR_ITEMS,
     payload: request,
   };
 }

@@ -6,3 +6,4 @@ export const GET_INVENTORY_ITEMS = "get_inventory_items";
 export const ADD_TO_RECOMMEND = "add_to_recommend";
 export const GET_RECOMMEND_ITEMS = "get_recommend_items";
 export const ADD_TO_STARS = "add_to_stars";
+export const GET_STAR_ITEMS = "get_star_items";

@@ -7,6 +7,7 @@ import {
   ADD_TO_RECOMMEND,
   GET_RECOMMEND_ITEMS,
   ADD_TO_STARS,
+  GET_STAR_ITEMS,
 } from "../_actions/types";
 
 export default function reducer(state = {}, action) {
@@ -52,6 +53,9 @@ export default function reducer(state = {}, action) {
 
     case GET_RECOMMEND_ITEMS:
       return { ...state, recommendDetail: action.payload };
+
+    case GET_STAR_ITEMS:
+      return { ...state, starDetail: action.payload };
 
     default:
       return state;
