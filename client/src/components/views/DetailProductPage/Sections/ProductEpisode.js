@@ -4,6 +4,7 @@ import TabContent from "../Sections/TabContent";
 function ProductEpisode(props) {
   const [Tab, setTab] = useState(0);
   let Video = props.Video;
+  let productId = props.productId;
 
   return (
     <div className="product_episode">
@@ -30,7 +31,7 @@ function ProductEpisode(props) {
         </Nav.Item>
       </Nav>
 
-      <TabContent tab={Tab} Video={Video} />
+      <TabContent tab={Tab} Video={Video} productId={productId} />
     </div>
   );
 }

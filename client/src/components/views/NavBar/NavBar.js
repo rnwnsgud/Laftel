@@ -124,7 +124,7 @@ function NavBar(props) {
           </svg>
         </div>
         <div className="header_user_menu">
-          <p>{user.userData && user.userData.name}</p>
+          <p onClick={onClickHandler}>{user.userData && user.userData.name}</p>
           <a href="/inventory">보관함</a>
 
           {/* <p onClick={onClickHandler} className="header_user_menu_logout">

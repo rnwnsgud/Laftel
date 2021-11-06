@@ -19,5 +19,6 @@ mongoose
 
 app.use("/api/users", require("./routes/users"));
 app.use("/api/product", require("./routes/product"));
+app.use("/api/comment", require("./routes/comment"));
 
 app.listen(port, () => console.log(`Exampe app listening on port ${port}!`));

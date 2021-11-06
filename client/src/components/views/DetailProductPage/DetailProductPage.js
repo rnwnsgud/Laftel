@@ -95,21 +95,21 @@ function DetailProductPage(props) {
       // console.log("작동하니?");
       user.userData.inventory.forEach((item) => {
         if (item.id === productId) {
-          console.log("item", item.id);
+          // console.log("item", item.id);
           setLike(true);
         }
       });
 
       user.userData.recommend.forEach((item) => {
         if (item.id === productId) {
-          console.log("item", item.id);
+          // console.log("item", item.id);
           setRecommend(true);
         }
       });
 
       user.userData.stars.forEach((item) => {
         if (item.id === productId) {
-          console.log("item", item.id);
+          // console.log("item", item.id);
           setStars(item.stars);
         }
       });
@@ -187,7 +187,7 @@ function DetailProductPage(props) {
           </button>
 
           <div className="product_center">
-            <ProductEpisode Video={Video} />
+            <ProductEpisode Video={Video} productId={productId} />
             <ProductInfo list={genres} detail={Product} />
             <div className="starRating">
               <StarRatings
